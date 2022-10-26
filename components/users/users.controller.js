@@ -1,4 +1,5 @@
 const user = require("../../models/User");
+const bcrypt = require('bcrypt');
 
 class UserController {
     index(req, res, next) {
@@ -6,7 +7,10 @@ class UserController {
     }
 
     signUp(req, res, next) {
-        const newUser = new user(req.body);
+        let nUser = req.body
+        nUser.password = bcrypt.hashSync(nUser.password, 10);
+        const newUser = new user(nUser);
+        
         newUser.save();
         res.status(200);
     }
