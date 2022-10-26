@@ -7,7 +7,7 @@ const route = require("./routers");
 db.connect();
 
 const app = express()
-const port = 5000
+const PORT = process.env.PORT || 3000;
 
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,6 +19,6 @@ app.use(bodyParser.json());
 // })
 route(app)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })

@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt');
 
 class UserController {
     index(req, res, next) {
-        res.send("Hello guys")
+        res.json({
+            "status" : 200
+        })
     }
 
     signUp(req, res, next) {
