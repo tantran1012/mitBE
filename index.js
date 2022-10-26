@@ -2,6 +2,7 @@ const express = require("express");
 const methodOverride = require("method-override");
 const path = require("path");
 const bodyParser = require("body-parser");
+var cors = require('cors')
 const db = require("./config/db");
 const route = require("./routers");
 db.connect();
@@ -13,6 +14,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors())
 
 route(app)
 
